@@ -1,0 +1,74 @@
+/* Tabs */
+"tab.library" = "Library";
+"tab.forYou" = "For you";
+"tab.myList" = "My list";
+"tab.rewards" = "Rewards";
+"tab.search" = "Search";
+
+/* Common Actions */
+"action.play" = "Play";
+"action.cancel" = "Cancel";
+"action.viewAll" = "View all";
+"action.added" = "Added";
+"action.share" = "Share";
+"action.goBack" = "Go back";
+"action.more" = "more";
+
+/* App */
+"app.name" = "Shorts";
+
+/* Home */
+"home.trending" = "Trending";
+"home.mostTrending" = "Most Trending";
+"home.onlyOnShorts" = "Only on Shorts";
+"home.newOnShorts" = "New on Shorts";
+"home.topPicks" = "Top Picks for You";
+"home.comingSoon" = "Coming Soon";
+"home.continueWatching" = "Continue Watching";
+"home.episodeProgress" = "EP: %d/%d";
+"home.hot" = "HOT";
+
+/* For You */
+"forYou.title" = "For You";
+"forYou.subtitle" = "Based on what you watch and save, we think you'll love these.";
+"forYou.picked" = "Picked for You";
+"forYou.because" = "Because You Watched";
+
+/* My List */
+"myList.title" = "My List";
+"myList.empty.title" = "Your list is empty";
+"myList.empty.subtitle" = "Tap + on any series to add it here";
+
+/* Search */
+"search.placeholder" = "Search series...";
+"search.noResults" = "No results for \"%@\"";
+
+/* Series Detail */
+"detail.episodes" = "%d Episodes";
+"detail.season" = "Season %d";
+"detail.trailer" = "Trailer";
+"detail.starring" = "Starring: %@";
+"detail.share" = "%@ — on Shorts!";
+
+/* Unlock Sheet */
+"unlock.title" = "You're getting close!";
+"unlock.trendingNow" = "Trending Now";
+"unlock.lovedIt" = "92% loved it";
+"unlock.subtitle" = "Unlock Episode %d to keep the story going.\nDon't miss what happens next.";
+"unlock.episode" = "Episode %d";
+"unlock.unlockEpisode" = "Unlock Episode %d";
+"unlock.unlockAll" = "Unlock All Episodes";
+"unlock.bingeStory" = "%d episodes · Binge the full story";
+"unlock.bestValue" = "BEST VALUE";
+"unlock.priceAll" = "$9.99";
+"unlock.pricePerEp" = "$0.18/ep";
+"unlock.priceSingle" = "$1.99";
+"unlock.limitedOffer" = "Limited time offer · Save 70% with full unlock";
+"unlock.restore" = "Restore Purchases";
+
+/* Toast */
+"toast.added" = "%@ added to My List";
+"toast.removed" = "%@ removed";
+
+/* Top Picks */
+"topPicks.episodes" = "%d episodes";
