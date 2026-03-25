@@ -29,14 +29,13 @@ struct HeroCarouselView: View {
                             NavigationLink(value: item) {
                                 heroCard(for: item, overlayOpacity: overlayOpacity)
                                     .clipShape(RoundedRectangle(cornerRadius: 16))
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 16)
+                                            .strokeBorder(.white.opacity(0.5), lineWidth: 0.5)
+                                    )
                             }
                             .buttonStyle(.plain)
                             .scaleEffect(scale)
-                            .clipShape(RoundedRectangle(cornerRadius: 16))
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 16)
-                                    .strokeBorder(.white.opacity(0.5), lineWidth: 0.5)
-                            )
                         }
                         .frame(width: cardWidth, height: cardHeight)
                         .containerRelativeFrame(.horizontal)
