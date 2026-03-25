@@ -22,7 +22,7 @@ struct HomeView: View {
             } else {
                 ScrollView(showsIndicators: false) {
                     LazyVStack(spacing: 24) {
-                        Color.clear.frame(height: 8)
+                        Color.clear.frame(height: 24)
 
                         ForEach(viewModel.sections) { sectionData in
                             sectionView(for: sectionData)

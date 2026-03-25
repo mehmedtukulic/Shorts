@@ -67,12 +67,19 @@ Resources/              → Design tokens, localization, mock data, assets
 
 ## NOTES:
 At the beginning of the task I was wondering why are the short covers provided and later realised that the app would look junky if the images didn't have consistent quality/resolutions if i decided to go with some urls I find on web. So I decided to put the whole folder in the app, create a mock.json file that would simulate the "optimal" response I would expect from BE, and did the mapping of the images based on its slug in SeriesImageLoader. In real project those images url's would usually come from BE and I would use async image to load them with some internal caching.
+
 Since this is small test project, I decided to go with the swiftui navigation, to avoid wasting time setuping coordinators which I would usually go for.
+
 Things I would improve:
+
 Dependency injection - it's bad with the current navigation setup, I would do the injections in coordinator or even better use some container based injection
+
 TabBar - From the beginning I created a custom tabbar to support liquid glass on both 17+ and 26+ version, then I had issues with my tab views being recreated on each tab switch, so I used native tabview to keep views in memory, hide it so it works under the hood, and displayed custom tabbar instead. There is probably a better solution to this, so on real project I would spend some more time investigating.
+
 Performance - A lot of things could be improved to optimise peformance on large data sets, with current data it was not necessary, but definitely worth taking some more time on real project.
+
 Resources - I avoided downloading many resources/icons from figma because of my self-restrictions on time, I was trying to match as much as possible with system provided icons
+
 Tests - I thought they were unecessary for this task, but would add them on every project.
 
 I have filled all the tabs and added some additional screens because you wrote: "Have fun and deliver something you'd be proud to showcase on your App Store account." and I can't showcase only 1 working tab on App Store account :D 
