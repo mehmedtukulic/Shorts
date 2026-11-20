@@ -28,11 +28,7 @@ struct HeroCarouselView: View {
 
                             NavigationLink(value: item) {
                                 heroCard(for: item, overlayOpacity: overlayOpacity)
-                                    .clipShape(RoundedRectangle(cornerRadius: 16))
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 16)
-                                            .strokeBorder(.white.opacity(0.5), lineWidth: 0.5)
-                                    )
+                                    .cardStyle(cornerRadius: 16)
                             }
                             .buttonStyle(.plain)
                             .scaleEffect(scale)
@@ -60,7 +56,7 @@ struct HeroCarouselView: View {
         .overlay(alignment: .top) {
             if let toastSeriesTitle {
                 Text(toastSeriesTitle)
-                    .font(.caption)
+                    .font(.captionMedium)
                     .foregroundStyle(.white)
                     .padding(.horizontal, 16)
                     .padding(.vertical, 10)
@@ -98,7 +94,7 @@ struct HeroCarouselView: View {
         let isAdded = isInMyList(series.id)
         return Button(isAdded ? String.added : .tabMyList) {
             UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-            withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
+            withAnimation(Motion.selection) {
                 toggleMyList(series.id)
             }
             showToast(for: series, added: !isAdded)
@@ -111,7 +107,7 @@ struct HeroCarouselView: View {
 
     private func showToast(for series: Series, added: Bool) {
         let title = added ? String.toastAdded(series.title) : .toastRemoved(series.title)
-        withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
+        withAnimation(Motion.selection) {
             toastSeriesTitle = title
         }
         Task { @MainActor in

@@ -27,6 +27,8 @@
 "home.continueWatching" = "Continue Watching";
 "home.episodeProgress" = "EP: %d/%d";
 "home.hot" = "HOT";
+"home.error.title" = "Couldn't load Shorts";
+"home.retry" = "Try again";
 
 /* For You */
 "forYou.title" = "For You";
@@ -38,6 +40,19 @@
 "myList.title" = "My List";
 "myList.empty.title" = "Your list is empty";
 "myList.empty.subtitle" = "Tap + on any series to add it here";
+
+/* Rewards */
+"rewards.discountBadge" = "81%\nOFF";
+"rewards.dailyCheckIn" = "Daily check-in rewards";
+"rewards.day" = "Day %d";
+"rewards.coins" = "+%d";
+"rewards.extraCoins" = "+10 Extra coins";
+"rewards.promo.title" = "Unlock all series for 1 week";
+"rewards.promo.price" = "9,99 €";
+"rewards.promo.originalPrice" = "19,99 €";
+"rewards.promo.claim" = "Claim Now";
+"rewards.followUs" = "Follow us";
+"rewards.go" = "Go";
 
 /* Search */
 "search.placeholder" = "Search series...";

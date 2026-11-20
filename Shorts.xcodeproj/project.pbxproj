@@ -13,6 +13,7 @@
 		021FF2B08B52E6AB392008A7 /* HeroCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346D2B659EAF52E3C2925F11 /* HeroCarouselView.swift */; };
 		079C21F456AFB2576B62DCCF /* SeriesCovers in Resources */ = {isa = PBXBuildFile; fileRef = 8C2553217C2BE0BE17CBFFBC /* SeriesCovers */; };
 		09AF7FC648B41C91B341DC4F /* Font+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7EBE7ACBDC6A018601725F /* Font+Theme.swift */; };
+		D03B6CE32F72E29700BC8D59 /* Layout+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03B6CE22F72E29700BC8D59 /* Layout+Theme.swift */; };
 		138176F101B0705E93CF9959 /* ParallaxHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130868B9F7EA13D7156341F5 /* ParallaxHeaderView.swift */; };
 		26E2F21EB2B2FAABC2A5AB4C /* Series.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857ACC038B3F6ADC13EEE9E8 /* Series.swift */; };
 		3E4A297D6F53D63DCF413C7A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C838470AC70AFEADBDFB2EB0 /* ContentView.swift */; };
@@ -39,6 +40,7 @@
 		C4B2E5F6A7D8901234567890 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A1D4E5F6C7890123456789 /* SearchView.swift */; };
 		CC11DD22EE33FF44AA55BB67 /* HomepageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC11DD22EE33FF44AA55BB66 /* HomepageResponse.swift */; };
 		D03B6CCF2F72E1A500BC8D59 /* LiquidGlassModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03B6CCE2F72E1A400BC8D59 /* LiquidGlassModifiers.swift */; };
+		D03B6CE12F72E29700BC8D59 /* CardStyleModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03B6CE02F72E29700BC8D59 /* CardStyleModifier.swift */; };
 		D03B6CD22F72E29700BC8D59 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D03B6CD02F72E29700BC8D59 /* Localizable.strings */; };
 		D03B6CDD2F7385CF00BC8D59 /* UnlockEpisodeSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03B6CDC2F7385CA00BC8D59 /* UnlockEpisodeSheet.swift */; };
 		D34BA5602DE32757BDB8FCBF /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7713B8508880AF43AD7E28 /* HomeViewModel.swift */; };
@@ -80,6 +82,7 @@
 		8C3BC3574E526EE3EB08233D /* SeriesDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesDetailView.swift; sourceTree = "<group>"; };
 		97C2707EDA1C5E864EB0D3B8 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		9D7EBE7ACBDC6A018601725F /* Font+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Theme.swift"; sourceTree = "<group>"; };
+		D03B6CE22F72E29700BC8D59 /* Layout+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Layout+Theme.swift"; sourceTree = "<group>"; };
 		A133C85DDFC258933880597C /* SeriesCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesCardView.swift; sourceTree = "<group>"; };
 		A160ED0161F6FBC572BF1E05 /* BottomBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBarView.swift; sourceTree = "<group>"; };
 		A1B2C3D4E5F6A7B8C9D01234 /* PrimaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonStyle.swift; sourceTree = "<group>"; };
@@ -96,6 +99,7 @@
 		CC11DD22EE33FF44AA55BB66 /* HomepageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomepageResponse.swift; sourceTree = "<group>"; };
 		CFE21DFEDAC2F910EF3901D8 /* HomepageSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomepageSection.swift; sourceTree = "<group>"; };
 		D03B6CCE2F72E1A400BC8D59 /* LiquidGlassModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiquidGlassModifiers.swift; sourceTree = "<group>"; };
+		D03B6CE02F72E29700BC8D59 /* CardStyleModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStyleModifier.swift; sourceTree = "<group>"; };
 		D03B6CCF2F72E29700BC8D59 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D03B6CDC2F7385CA00BC8D59 /* UnlockEpisodeSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockEpisodeSheet.swift; sourceTree = "<group>"; };
 		DD11EE22FF33AA44BB55CC66 /* SeriesImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesImageView.swift; sourceTree = "<group>"; };
@@ -200,6 +204,7 @@
 				A3D7E9F1B2C4068573E1DA90 /* Assets.xcassets */,
 				FF903325763A9AE927FC9C46 /* Color+Theme.swift */,
 				9D7EBE7ACBDC6A018601725F /* Font+Theme.swift */,
+				D03B6CE22F72E29700BC8D59 /* Layout+Theme.swift */,
 				B8D4F9A2E5C73B1B6F9A2D4E /* Icon+Theme.swift */,
 				F335F1903E533C698DA71024 /* MockData.json */,
 				8C2553217C2BE0BE17CBFFBC /* SeriesCovers */,
@@ -233,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				D03B6CCE2F72E1A400BC8D59 /* LiquidGlassModifiers.swift */,
+				D03B6CE02F72E29700BC8D59 /* CardStyleModifier.swift */,
 			);
 			path = "View Modifiers";
 			sourceTree = "<group>";
@@ -407,6 +413,7 @@
 				AA11BB22CC33DD44EE55FF66 /* EnvironmentKeys.swift in Sources */,
 				959B506E4E6A1849B5316EF6 /* EpisodeGridView.swift in Sources */,
 				09AF7FC648B41C91B341DC4F /* Font+Theme.swift in Sources */,
+				D03B6CE32F72E29700BC8D59 /* Layout+Theme.swift in Sources */,
 				021FF2B08B52E6AB392008A7 /* HeroCarouselView.swift in Sources */,
 				A7C3E8F1D4B6290A5E8F1C3D /* Icon+Theme.swift in Sources */,
 				0011AA22BB33CC44DD55EE01 /* ForYouView.swift in Sources */,
@@ -440,6 +447,7 @@
 				804CC71912EAC9E1FAB997DB /* ShortsLogoView.swift in Sources */,
 				428204FE5125C6DC87CF8186 /* TopPicksSectionView.swift in Sources */,
 				D03B6CCF2F72E1A500BC8D59 /* LiquidGlassModifiers.swift in Sources */,
+				D03B6CE12F72E29700BC8D59 /* CardStyleModifier.swift in Sources */,
 				B2D3E4F5A6B7C8D9E0F1A2B3 /* String+Localized.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

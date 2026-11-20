@@ -1,22 +1,31 @@
 import SwiftUI
 
 struct ComingSoonCarouselView: View {
-    @State private var currentIndex = 0
+    @State private var currentID: Series.ID?
 
     let items: [Series]
+
+    private var currentIndex: Int {
+        items.firstIndex { $0.id == currentID } ?? 0
+    }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             SectionHeaderView(title: .comingSoon)
                 .padding(.bottom, 12)
 
-            TabView(selection: $currentIndex) {
-                ForEach(Array(items.enumerated()), id: \.element.id) { index, item in
-                    comingSoonCard(for: item)
-                        .tag(index)
+            ScrollView(.horizontal) {
+                LazyHStack(spacing: 0) {
+                    ForEach(items) { item in
+                        comingSoonCard(for: item)
+                            .containerRelativeFrame(.horizontal)
+                    }
                 }
+                .scrollTargetLayout()
             }
-            .tabViewStyle(.page(indexDisplayMode: .never))
+            .scrollIndicators(.hidden)
+            .scrollTargetBehavior(.paging)
+            .scrollPosition(id: $currentID)
             .frame(height: 200)
 
             HStack(spacing: 6) {
@@ -28,7 +37,7 @@ struct ComingSoonCarouselView: View {
             }
             .frame(maxWidth: .infinity)
             .padding(.top, 12)
-            .animation(.easeInOut(duration: 0.2), value: currentIndex)
+            .animation(Motion.quickFade, value: currentID)
         }
     }
 
@@ -50,7 +59,7 @@ struct ComingSoonCarouselView: View {
                     VStack(alignment: .leading, spacing: 8) {
                         if let releaseDate = item.releaseDate {
                             Text(releaseDate)
-                                .font(.caption)
+                                .font(.captionMedium)
                                 .fontWeight(.semibold)
                                 .foregroundStyle(.white.opacity(0.8))
                                 .padding(.horizontal, 8)
@@ -59,7 +68,7 @@ struct ComingSoonCarouselView: View {
                         }
 
                         Text(item.title)
-                            .font(.title2)
+                            .font(.titleLarge)
                             .fontWeight(.bold)
                             .foregroundStyle(.white)
                     }
@@ -76,7 +85,7 @@ struct ComingSoonCarouselView: View {
                     }
                     .padding(12)
                 }
-                .clipShape(RoundedRectangle(cornerRadius: 12))
+                .cardStyle(cornerRadius: 12, bordered: false)
                 .padding(.horizontal)
         }
         .buttonStyle(.plain)

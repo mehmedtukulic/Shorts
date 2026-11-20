@@ -7,13 +7,16 @@ enum SeriesImageType: String {
     case comingSoonCard = "ComingSoonCard"
 }
 
-final class SeriesImageLoader {
-    static let shared = SeriesImageLoader()
+/// Bundle image loader with an in-memory cache.
+///
+/// `@unchecked Sendable`: the only mutable state is `NSCache`, which is documented as thread-safe, and everything else is immutable.
+/// One instance is created in `ShortsApp`  and injected through the environment.
 
+final class SeriesImageLoader: @unchecked Sendable {
     private let cache = NSCache<NSString, UIImage>()
 
-    private init() {
-        cache.countLimit = 100
+    init(countLimit: Int = 100) {
+        cache.countLimit = countLimit
     }
 
     func image(for slug: String, type: SeriesImageType) -> UIImage? {

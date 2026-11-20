@@ -1,6 +1,6 @@
 import SwiftUI
 
-// MARK: - !!!! THIS IS PURE HARDCODED VIEW, JUST TO POPULATE ALL TABS. THAT'S WHY I USED HARDCODED VALUES FOR STRINGS AND ICONS
+// MARK: - Placeholder screen to populate the tab: reward data, balance and icons are hardcoded; user-facing copy is localized.
 
 struct RewardsView: View {
     private var dailyRewards: [DailyReward] {
@@ -35,7 +35,7 @@ struct RewardsView: View {
 
                     Spacer(minLength: 100)
                 }
-                .padding(.horizontal, 20)
+                .padding(.horizontal, Layout.screenPadding)
             }
 
             headerOverlay
@@ -50,7 +50,7 @@ struct RewardsView: View {
                 .foregroundStyle(.white)
             Spacer()
         }
-        .padding(.horizontal, 20)
+        .padding(.horizontal, Layout.screenPadding)
         .padding(.top, 4)
         .padding(.bottom, 8)
         .background(
@@ -77,7 +77,7 @@ struct RewardsView: View {
             Spacer()
 
             // Discount badge
-            Text("81%\nOFF")
+            Text(String.rewardsDiscountBadge)
                 .font(.system(size: 13, weight: .heavy))
                 .foregroundStyle(.white)
                 .multilineTextAlignment(.center)
@@ -112,7 +112,7 @@ struct RewardsView: View {
                 .foregroundStyle(.yellow)
                 .shadow(color: .yellow.opacity(0.3), radius: 12)
 
-            Text("Daily check-in rewards")
+            Text(String.rewardsDailyCheckIn)
                 .font(.title1)
                 .foregroundStyle(.white)
 
@@ -129,7 +129,7 @@ struct RewardsView: View {
                 HStack(spacing: 8) {
                     Image(systemName: "video.fill")
                         .font(.system(size: 16))
-                    Text("+10 Extra coins")
+                    Text(String.rewardsExtraCoins)
                         .font(.button)
                 }
                 .foregroundStyle(.white)
@@ -156,7 +156,7 @@ struct RewardsView: View {
     @ViewBuilder
     private func dayColumn(_ reward: DailyReward) -> some View {
         VStack(spacing: 6) {
-            Text("Day \(reward.day)")
+            Text(String.rewardsDay(reward.day))
                 .font(.system(size: 11, weight: .medium))
                 .foregroundStyle(reward.claimed ? .white.opacity(0.5) : .white)
 
@@ -173,7 +173,7 @@ struct RewardsView: View {
                     .frame(width: 36, height: 36)
             }
 
-            Text("+\(reward.coins)")
+            Text(String.rewardsCoins(reward.coins))
                 .font(.system(size: 12, weight: .semibold))
                 .foregroundStyle(reward.claimed ? .white.opacity(0.4) : .yellow)
         }
@@ -183,16 +183,16 @@ struct RewardsView: View {
 
     private var promoBanner: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Unlock all series for 1 week")
+            Text(String.rewardsPromoTitle)
                 .font(.bodyMedium)
                 .foregroundStyle(.white)
 
             HStack(alignment: .firstTextBaseline, spacing: 8) {
-                Text("9,99 €")
+                Text(String.rewardsPromoPrice)
                     .font(.system(size: 32, weight: .heavy))
                     .foregroundStyle(.white)
 
-                Text("19,99 €")
+                Text(String.rewardsPromoOriginalPrice)
                     .font(.system(size: 16, weight: .medium))
                     .foregroundStyle(.white.opacity(0.4))
                     .strikethrough(color: .white.opacity(0.4))
@@ -200,7 +200,7 @@ struct RewardsView: View {
 
             Button {} label: {
                 HStack(spacing: 4) {
-                    Text("Claim Now")
+                    Text(String.rewardsPromoClaim)
                         .font(.system(size: 14, weight: .semibold))
                     Image(systemName: "arrow.right")
                         .font(.system(size: 12, weight: .semibold))
@@ -229,7 +229,7 @@ struct RewardsView: View {
 
     private var followUsSection: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("Follow us")
+            Text(String.rewardsFollowUs)
                 .font(.title1)
                 .foregroundStyle(.white)
 
@@ -262,7 +262,7 @@ struct RewardsView: View {
                 Image(systemName: "heart.circle.fill")
                     .font(.system(size: 16))
                     .foregroundStyle(.yellow)
-                Text("+\(coins)")
+                Text(String.rewardsCoins(coins))
                     .font(.bodyMedium)
                     .foregroundStyle(.white)
             }
@@ -270,7 +270,7 @@ struct RewardsView: View {
             Spacer()
 
             Button {} label: {
-                Text("Go")
+                Text(String.rewardsGo)
                     .font(.system(size: 14, weight: .semibold))
                     .foregroundStyle(.white)
                     .frame(width: 70, height: 34)

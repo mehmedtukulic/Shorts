@@ -4,12 +4,13 @@ import SwiftUI
 struct ShortsApp: App {
     private let seriesRepository = SeriesRepository()
     private let myListRepository = MyListRepository()
+    private let imageLoader = SeriesImageLoader()
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.seriesRepository, seriesRepository)
-                .environment(\.myListRepository, myListRepository)
+            ContentView(seriesRepository: seriesRepository,
+                        myListRepository: myListRepository)
+                .environment(\.seriesImageLoader, imageLoader)
                 .preferredColorScheme(.dark)
         }
     }

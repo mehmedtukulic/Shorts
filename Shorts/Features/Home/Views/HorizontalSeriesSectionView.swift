@@ -3,8 +3,8 @@ import SwiftUI
 struct HorizontalSeriesSectionView: View {
     let title: String
     let items: [Series]
-    var cardWidth: CGFloat = 120
-    var cardHeight: CGFloat = 170
+    var cardWidth: CGFloat = Layout.standardCardWidth
+    var cardHeight: CGFloat = Layout.standardCardHeight
     var showRanking: Bool = false
 
     var body: some View {
@@ -45,7 +45,7 @@ struct HorizontalSeriesSectionView: View {
                     SeriesImageView(slug: item.slug, type: .coverComplete)
                         .aspectRatio(contentMode: .fill)
                         .frame(width: cardWidth, height: cardHeight)
-                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                        .cardStyle()
                         .overlay(alignment: .topTrailing) {
                             Text(String.hot)
                                 .font(.system(size: 10, weight: .heavy))
@@ -55,10 +55,6 @@ struct HorizontalSeriesSectionView: View {
                                 .background(Color.accentPink, in: Capsule())
                                 .padding(6)
                         }
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 8)
-                                .strokeBorder(.white.opacity(0.5), lineWidth: 0.5)
-                        )
                 }
 
                 // View count

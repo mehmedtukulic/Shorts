@@ -35,7 +35,7 @@ struct TopPicksSectionView: View {
             SeriesImageView(slug: serie.slug, type: .coverComplete)
                 .aspectRatio(contentMode: .fill)
                 .frame(width: 80, height: 110)
-                .clipShape(RoundedRectangle(cornerRadius: 8))
+                .cardStyle(bordered: false)
 
             VStack(alignment: .leading, spacing: 6) {
                 Text(serie.title)

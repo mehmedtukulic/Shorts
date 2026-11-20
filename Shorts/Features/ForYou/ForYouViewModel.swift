@@ -18,9 +18,12 @@ final class ForYouViewModel {
 
     func loadRecommendations() {
         guard !isLoaded else { return }
-        isLoaded = true
 
         let allSeries = seriesRepository.allSeries
+        // Repository hasn't loaded yet: stay retryable instead of latching an empty result.
+        guard !allSeries.isEmpty else { return }
+        isLoaded = true
+
         let userGenres = collectUserGenres()
 
         // Recommend series matching user's genres, excluding what they already watch/saved

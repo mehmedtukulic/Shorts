@@ -11,11 +11,7 @@ struct ForYouView: View {
         ))
     }
 
-    private let columns = [
-        GridItem(.flexible(), spacing: 12),
-        GridItem(.flexible(), spacing: 12),
-        GridItem(.flexible(), spacing: 12)
-    ]
+    private let columns = Layout.posterColumns
 
     var body: some View {
         ZStack(alignment: .top) {
@@ -27,25 +23,21 @@ struct ForYouView: View {
                     Color.clear.frame(height: 56)
 
                     Text(String.forYouSubtitle)
-                        .font(.body)
+                        .font(.bodyRegular)
                         .foregroundStyle(.textSecondary)
-                        .padding(.horizontal, 20)
+                        .padding(.horizontal, Layout.screenPadding)
 
                     if !viewModel.recommendedSeries.isEmpty {
-                        LazyVGrid(columns: columns, spacing: 14) {
+                        LazyVGrid(columns: columns, spacing: Layout.posterGridRowSpacing) {
                             ForEach(viewModel.recommendedSeries) { series in
                                 NavigationLink(value: series) {
                                     SeriesImageView(slug: series.slug, type: .coverComplete)
                                         .aspectRatio(2/3, contentMode: .fill)
-                                        .clipShape(RoundedRectangle(cornerRadius: 8))
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: 8)
-                                                .strokeBorder(.white.opacity(0.5), lineWidth: 0.5)
-                                        )
+                                        .cardStyle()
                                 }
                             }
                         }
-                        .padding(.horizontal, 20)
+                        .padding(.horizontal, Layout.screenPadding)
                     }
 
                     // Because you watched
@@ -54,7 +46,7 @@ struct ForYouView: View {
                             Text(String.forYouBecause)
                                 .font(.title1)
                                 .foregroundStyle(.white)
-                                .padding(.horizontal, 20)
+                                .padding(.horizontal, Layout.screenPadding)
 
                             ScrollView(.horizontal, showsIndicators: false) {
                                 LazyHStack(spacing: 10) {
@@ -64,11 +56,7 @@ struct ForYouView: View {
                                                 SeriesImageView(slug: series.slug, type: .coverComplete)
                                                     .aspectRatio(contentMode: .fill)
                                                     .frame(width: 140, height: 200)
-                                                    .clipShape(RoundedRectangle(cornerRadius: 8))
-                                                    .overlay(
-                                                        RoundedRectangle(cornerRadius: 8)
-                                                            .strokeBorder(.white.opacity(0.5), lineWidth: 0.5)
-                                                    )
+                                                    .cardStyle()
 
                                                 Text(series.title)
                                                     .font(.small)
@@ -81,7 +69,7 @@ struct ForYouView: View {
                                         .buttonStyle(.plain)
                                     }
                                 }
-                                .padding(.horizontal, 20)
+                                .padding(.horizontal, Layout.screenPadding)
                             }
                         }
                     }
@@ -105,7 +93,7 @@ struct ForYouView: View {
                 .foregroundStyle(.white)
             Spacer()
         }
-        .padding(.horizontal, 20)
+        .padding(.horizontal, Layout.screenPadding)
         .padding(.top, 4)
         .padding(.bottom, 8)
         .background(

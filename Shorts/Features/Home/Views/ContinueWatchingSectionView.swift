@@ -70,10 +70,6 @@ struct ContinueWatchingSectionView: View {
                     .padding(.bottom, 6)
                 }
             }
-            .clipShape(RoundedRectangle(cornerRadius: 8))
-            .overlay(
-                RoundedRectangle(cornerRadius: 8)
-                    .strokeBorder(.white.opacity(0.5), lineWidth: 0.5)
-            )
+            .cardStyle()
     }
 }

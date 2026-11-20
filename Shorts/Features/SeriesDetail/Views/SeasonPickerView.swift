@@ -18,13 +18,13 @@ struct SeasonPickerView: View {
     @ViewBuilder
     private func seasonTab(_ season: Int) -> some View {
         Button {
-            withAnimation(.easeInOut(duration: 0.2)) {
+            withAnimation(Motion.quickFade) {
                 selectedSeason = season
             }
         } label: {
             VStack(spacing: 6) {
                 Text(String.season(season))
-                    .font(selectedSeason == season ? .bodyMedium : .body)
+                    .font(selectedSeason == season ? .bodyMedium : .bodyRegular)
                     .foregroundStyle(selectedSeason == season ? .white : .textSecondary)
 
                 Rectangle()

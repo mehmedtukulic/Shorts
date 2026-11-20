@@ -17,12 +17,18 @@ final class HomeViewModel {
     }
 
     func loadSections() async {
+        // Already loaded (e.g. the view re-appeared): keep content, no spinner flash.
+        guard sections.isEmpty else { return }
+
         isLoading = true
         error = nil
 
         do {
             try await repository.loadData()
             sections = repository.homepageSections
+        } catch is CancellationError {
+            // The .task owner went away. Not a failure: leave state untouched.
+            return
         } catch {
             self.error = error.localizedDescription
         }

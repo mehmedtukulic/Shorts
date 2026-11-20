@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct SeriesDetailView: View {
-    @Environment(\.tabBarVisibility) private var tabBarVisibility
     @Environment(\.dismiss) private var dismiss
 
     @State private var viewModel: SeriesDetailViewModel
@@ -51,7 +50,6 @@ struct SeriesDetailView: View {
             }
         }
         .ignoresSafeArea(edges: .top)
-        .onAppear { tabBarVisibility.isVisible = false }
     }
 
     // MARK: - Toolbar Buttons
@@ -126,19 +124,19 @@ struct SeriesDetailView: View {
     private func expandableDescription(_ text: String) -> some View {
         ZStack(alignment: .bottomTrailing) {
             Text(text)
-                .font(.body)
+                .font(.bodyRegular)
                 .foregroundStyle(.white)
                 .lineLimit(isDescriptionExpanded ? nil : 3)
-                .animation(.easeInOut(duration: 0.3), value: isDescriptionExpanded)
+                .animation(Motion.fade, value: isDescriptionExpanded)
 
             if !isDescriptionExpanded {
                 Button {
-                    withAnimation(.easeInOut(duration: 0.3)) {
+                    withAnimation(Motion.fade) {
                         isDescriptionExpanded = true
                     }
                 } label: {
                     Text(String.more)
-                        .font(.body)
+                        .font(.bodyRegular)
                         .fontWeight(.semibold)
                         .foregroundStyle(.white.opacity(0.6))
                         .padding(.leading, 24)

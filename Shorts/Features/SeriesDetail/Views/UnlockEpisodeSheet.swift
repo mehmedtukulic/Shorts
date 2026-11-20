@@ -49,11 +49,11 @@ struct UnlockEpisodeSheet: View {
 
                 VStack(spacing: 6) {
                     Text(String.unlockTitle)
-                        .font(.title2)
+                        .font(.titleLarge)
                         .foregroundStyle(.white)
 
                     Text(String.unlockSubtitle(episode.id))
-                        .font(.body)
+                        .font(.bodyRegular)
                         .foregroundStyle(.secondary)
                         .multilineTextAlignment(.center)
                         .lineSpacing(3)
@@ -88,7 +88,7 @@ struct UnlockEpisodeSheet: View {
                                         .font(.button)
                                         .foregroundStyle(.white)
                                     Text(String.unlockBingeStory(totalLocked))
-                                        .font(.caption)
+                                        .font(.captionMedium)
                                         .foregroundStyle(.white.opacity(0.7))
                                 }
                                 Spacer()
@@ -142,7 +142,7 @@ struct UnlockEpisodeSheet: View {
                     }
                     .buttonStyle(.plain)
                 }
-                .padding(.horizontal, 20)
+                .padding(.horizontal, Layout.screenPadding)
                 .padding(.top, 24)
 
                 HStack(spacing: 6) {
@@ -156,7 +156,7 @@ struct UnlockEpisodeSheet: View {
 
                 Button { dismiss() } label: {
                     Text(String.restorePurchases)
-                        .font(.caption)
+                        .font(.captionMedium)
                         .foregroundStyle(.secondary)
                 }
                 .padding(.top, 20)

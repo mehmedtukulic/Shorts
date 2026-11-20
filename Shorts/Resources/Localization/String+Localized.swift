@@ -33,6 +33,8 @@ extension String {
     static let comingSoon = NSLocalizedString("home.comingSoon", comment: "")
     static let continueWatching = NSLocalizedString("home.continueWatching", comment: "")
     static let hot = NSLocalizedString("home.hot", comment: "")
+    static let homeErrorTitle = NSLocalizedString("home.error.title", comment: "")
+    static let homeRetry = NSLocalizedString("home.retry", comment: "")
 
     // MARK: - For You
 
@@ -50,6 +52,26 @@ extension String {
     static let myListTitle = NSLocalizedString("myList.title", comment: "")
     static let myListEmptyTitle = NSLocalizedString("myList.empty.title", comment: "")
     static let myListEmptySubtitle = NSLocalizedString("myList.empty.subtitle", comment: "")
+
+    // MARK: - Rewards
+
+    static let rewardsDiscountBadge = NSLocalizedString("rewards.discountBadge", comment: "")
+    static let rewardsDailyCheckIn = NSLocalizedString("rewards.dailyCheckIn", comment: "")
+    static let rewardsExtraCoins = NSLocalizedString("rewards.extraCoins", comment: "")
+    static let rewardsPromoTitle = NSLocalizedString("rewards.promo.title", comment: "")
+    static let rewardsPromoPrice = NSLocalizedString("rewards.promo.price", comment: "")
+    static let rewardsPromoOriginalPrice = NSLocalizedString("rewards.promo.originalPrice", comment: "")
+    static let rewardsPromoClaim = NSLocalizedString("rewards.promo.claim", comment: "")
+    static let rewardsFollowUs = NSLocalizedString("rewards.followUs", comment: "")
+    static let rewardsGo = NSLocalizedString("rewards.go", comment: "")
+
+    static func rewardsDay(_ day: Int) -> String {
+        String(format: NSLocalizedString("rewards.day", comment: ""), day)
+    }
+
+    static func rewardsCoins(_ amount: Int) -> String {
+        String(format: NSLocalizedString("rewards.coins", comment: ""), amount)
+    }
 
     // MARK: - Search
 

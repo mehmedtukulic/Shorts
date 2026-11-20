@@ -48,7 +48,7 @@ struct MainTabBar: View {
             tabPills
             searchButton
         }
-        .padding(.horizontal, 20)
+        .padding(.horizontal, Layout.screenPadding)
         .padding(.bottom, 2)
     }
 
@@ -94,7 +94,7 @@ struct MainTabBar: View {
     @ViewBuilder
     private func tabItem(_ tab: AppTab) -> some View {
         Button {
-            withAnimation(.spring(response: 0.35, dampingFraction: 0.8)) {
+            withAnimation(Motion.selection) {
                 selectedTab = tab
             }
         } label: {

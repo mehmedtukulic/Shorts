@@ -3,11 +3,7 @@ import SwiftUI
 struct MyListView: View {
     @State private var viewModel: MyListViewModel
 
-    private let columns = [
-        GridItem(.flexible(), spacing: 12),
-        GridItem(.flexible(), spacing: 12),
-        GridItem(.flexible(), spacing: 12)
-    ]
+    private let columns = Layout.posterColumns
 
     init(myListRepository: any MyListRepositoryProtocol,
          seriesRepository: any SeriesRepositoryProtocol) {
@@ -29,15 +25,15 @@ struct MyListView: View {
                         Text(String.myListTitle)
                             .font(.heading)
                             .foregroundStyle(.white)
-                            .padding(.horizontal, 20)
+                            .padding(.horizontal, Layout.screenPadding)
                             .padding(.top, 16)
 
-                        LazyVGrid(columns: columns, spacing: 14) {
+                        LazyVGrid(columns: columns, spacing: Layout.posterGridRowSpacing) {
                             ForEach(viewModel.seriesList) { series in
                                 seriesCard(series)
                             }
                         }
-                        .padding(.horizontal, 20)
+                        .padding(.horizontal, Layout.screenPadding)
 
                         Spacer(minLength: 100)
                     }
@@ -50,7 +46,7 @@ struct MyListView: View {
         NavigationLink(value: series) {
             SeriesImageView(slug: series.slug, type: .coverComplete)
                 .aspectRatio(2/3, contentMode: .fill)
-                .clipShape(RoundedRectangle(cornerRadius: 8))
+                .cardStyle(bordered: false)
                 .overlay(alignment: .topTrailing) {
                     removeButton(series)
                 }
@@ -59,7 +55,7 @@ struct MyListView: View {
 
     private func removeButton(_ series: Series) -> some View {
         Button {
-            withAnimation(.spring(response: 0.35, dampingFraction: 0.8)) {
+            withAnimation(Motion.selection) {
                 viewModel.remove(series.id)
             }
         } label: {
@@ -82,7 +78,7 @@ struct MyListView: View {
                 .font(.title1)
                 .foregroundStyle(.white)
             Text(String.myListEmptySubtitle)
-                .font(.body)
+                .font(.bodyRegular)
                 .foregroundStyle(.secondary)
         }
     }

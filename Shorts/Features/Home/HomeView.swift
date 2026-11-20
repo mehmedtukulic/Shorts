@@ -19,6 +19,8 @@ struct HomeView: View {
                     .tint(.accentPink)
                     .scaleEffect(1.5)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
+            } else if let message = viewModel.error {
+                errorView(message)
             } else {
                 ScrollView(showsIndicators: false) {
                     LazyVStack(spacing: 24) {
@@ -36,10 +38,31 @@ struct HomeView: View {
             headerOverlay
         }
         .navigationBarHidden(true)
-        .animation(.easeInOut(duration: 0.3), value: viewModel.isLoading)
+        .animation(Motion.fade, value: viewModel.isLoading)
         .task {
             await viewModel.loadSections()
         }
+    }
+
+    // MARK: - Error
+
+    private func errorView(_ message: String) -> some View {
+        VStack(spacing: 16) {
+            Text(String.homeErrorTitle)
+                .font(.headline)
+                .foregroundStyle(.white)
+            Text(message)
+                .font(.subheadline)
+                .foregroundStyle(.textSecondary)
+                .multilineTextAlignment(.center)
+            Button(String.homeRetry) {
+                Task { await viewModel.loadSections() }
+            }
+            .buttonStyle(.primary)
+            .padding(.horizontal, 48)
+        }
+        .padding()
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
     // MARK: - Section Router

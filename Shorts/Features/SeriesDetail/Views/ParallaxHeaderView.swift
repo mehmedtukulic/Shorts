@@ -53,7 +53,7 @@ struct ParallaxHeaderView: View {
                     .scaleEffect(titleScale)
 
                 Text(series.genreBreadcrumb)
-                    .font(.caption)
+                    .font(.captionMedium)
                     .foregroundStyle(.white)
             }
             .opacity(titleOpacity)

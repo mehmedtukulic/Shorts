@@ -30,7 +30,7 @@ struct EpisodeGridView: View {
                 )
                 .onTapGesture {
                     if isUnlocked {
-                        withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
+                        withAnimation(Motion.selection) {
                             selectedEpisode = episode.id
                         }
                     } else {

@@ -4,25 +4,41 @@ struct SearchView: View {
     @State private var viewModel: SearchViewModel
     @Binding var isPresented: Bool
     @FocusState private var isSearchFocused: Bool
+    @Binding var path: [Series]
 
-    private let columns = [
-        GridItem(.flexible(), spacing: 12),
-        GridItem(.flexible(), spacing: 12),
-        GridItem(.flexible(), spacing: 12)
-    ]
+    private let myListRepository: any MyListRepositoryProtocol
 
-    init(isPresented: Binding<Bool>, seriesRepository: any SeriesRepositoryProtocol) {
+    private let columns = Layout.posterColumns
+
+    init(isPresented: Binding<Bool>,
+         path: Binding<[Series]>,
+         seriesRepository: any SeriesRepositoryProtocol,
+         myListRepository: any MyListRepositoryProtocol) {
         _isPresented = isPresented
+        _path = path
+        self.myListRepository = myListRepository
         _viewModel = State(initialValue: SearchViewModel(seriesRepository: seriesRepository))
     }
 
     var body: some View {
+        // The overlay sits outside the tab NavigationStacks, so it needs its own stack
+        // (and destination) for the result links to navigate.
+        NavigationStack(path: $path) {
+            searchContent
+                .toolbar(.hidden, for: .navigationBar)
+                .navigationDestination(for: Series.self) { series in
+                    SeriesDetailView(series: series, myListRepository: myListRepository)
+                }
+        }
+    }
+
+    private var searchContent: some View {
         VStack(spacing: 0) {
             HStack(spacing: 12) {
                 searchField
                 cancelButton
             }
-            .padding(.horizontal, 20)
+            .padding(.horizontal, Layout.screenPadding)
             .padding(.top, 16)
 
             Rectangle()
@@ -107,12 +123,12 @@ struct SearchView: View {
                 ForEach(viewModel.allGenres, id: \.self) { genre in
                     let isSelected = viewModel.selectedGenres.contains(genre)
                     Button {
-                        withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
+                        withAnimation(Motion.selection) {
                             viewModel.toggleGenre(genre)
                         }
                     } label: {
                         Text(genre)
-                            .font(.caption)
+                            .font(.captionMedium)
                             .foregroundStyle(isSelected ? .white : .secondary)
                             .padding(.horizontal, 14)
                             .padding(.vertical, 7)
@@ -126,7 +142,7 @@ struct SearchView: View {
                     .buttonStyle(.plain)
                 }
             }
-            .padding(.horizontal, 20)
+            .padding(.horizontal, Layout.screenPadding)
             .padding(.vertical, 10)
         }
     }
@@ -134,16 +150,16 @@ struct SearchView: View {
     // MARK: - Search Results
 
     private var searchResults: some View {
-        LazyVGrid(columns: columns, spacing: 14) {
+        LazyVGrid(columns: columns, spacing: Layout.posterGridRowSpacing) {
             ForEach(viewModel.filteredSeries) { series in
                 NavigationLink(value: series) {
                     SeriesImageView(slug: series.slug, type: .coverComplete)
                         .aspectRatio(2/3, contentMode: .fill)
-                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                        .cardStyle(bordered: false)
                 }
             }
         }
-        .padding(.horizontal, 20)
+        .padding(.horizontal, Layout.screenPadding)
         .padding(.top, 16)
     }
 
@@ -154,20 +170,20 @@ struct SearchView: View {
             Text(String.trending)
                 .font(.title1)
                 .foregroundStyle(.white)
-                .padding(.horizontal, 20)
+                .padding(.horizontal, Layout.screenPadding)
                 .padding(.top, 20)
                 .padding(.bottom, 16)
 
-            LazyVGrid(columns: columns, spacing: 14) {
+            LazyVGrid(columns: columns, spacing: Layout.posterGridRowSpacing) {
                 ForEach(viewModel.trendingSeries) { series in
                     NavigationLink(value: series) {
                         SeriesImageView(slug: series.slug, type: .coverComplete)
                             .aspectRatio(2/3, contentMode: .fill)
-                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                            .cardStyle(bordered: false)
                     }
                 }
             }
-            .padding(.horizontal, 20)
+            .padding(.horizontal, Layout.screenPadding)
         }
     }
 
@@ -179,7 +195,7 @@ struct SearchView: View {
                 .font(.system(size: 40))
                 .foregroundStyle(.secondary)
             Text(String.searchNoResults(viewModel.searchText))
-                .font(.body)
+                .font(.bodyRegular)
                 .foregroundStyle(.secondary)
         }
         .frame(maxWidth: .infinity)

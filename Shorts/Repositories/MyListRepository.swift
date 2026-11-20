@@ -2,7 +2,7 @@ import Foundation
 
 // MARK: - Protocol
 
-protocol MyListRepositoryProtocol: AnyObject, Observable {
+@MainActor protocol MyListRepositoryProtocol: AnyObject, Observable {
     func contains(_ id: String) -> Bool
     func toggle(_ id: String)
     func set(_ id: String, listed: Bool)
@@ -12,7 +12,7 @@ protocol MyListRepositoryProtocol: AnyObject, Observable {
 
 // MARK: - Concrete Implementation
 
-@Observable
+@MainActor @Observable
 final class MyListRepository: MyListRepositoryProtocol {
     private var seriesIDs: [String] = []
     private var idSet: Set<String> = []
